@@ -10,13 +10,13 @@ export default function mouse() {
 
     const estilo = {
         backgroundColor: "#222",
-            color: "#fff",
-            fontSize: "150%",
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center"
+        color: "#fff",
+        fontSize: "150%",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center"
     }
 
     function quandoMover(ev){
