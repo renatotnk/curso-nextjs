@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js specific Exercises
+This repository contains the first exercises developed in the Udemy Course that are specifically teaching the basics of the Next.js Framework.
 
 ## Getting Started
 
