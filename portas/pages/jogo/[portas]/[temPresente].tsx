@@ -2,7 +2,6 @@ import styles from "../../../styles/Jogo.module.css"
 import { useEffect, useState } from "react";
 import Porta from "../../../components/Porta/Porta";
 import { atualizarPortas, criarPortas } from "../../../functions/portas";
-import PortaModel from "../../../model/Porta";
 import Link from "next/link";
 import {useRouter} from "next/router";
 
