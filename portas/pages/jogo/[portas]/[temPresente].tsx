@@ -26,7 +26,7 @@ export default function Jogo() {
 
         setValido(qtdePortasValida && temPresenteValido)
         
-    }, [portas])
+    }, [portas, router.query.portas, router.query.temPresente])
 
     function renderizarPortas(){
         return portas.map(porta => {
