@@ -7,13 +7,13 @@ export async function getStaticPaths(){
     })
 
     return{
-        fallback: false,
+        fallback: true,
         paths
     }
 }
 
-export async function getStaticProps(context){
-    const resp = await fetch(`http://localhost:3000/api/alunos/${context.params.id}`)
+export async function getStaticProps({params}){
+    const resp = await fetch(`http://localhost:3000/api/alunos/${params.id}`)
     const aluno = await resp.json()
     return{
         props: {
@@ -27,11 +27,15 @@ export default function AlunoPorId(props) {
     return(
         <div>
             <h1>Detalhes do Aluno</h1>
-            <ul>
-                <li>{aluno.id}</li>
-                <li>{aluno.nome}</li>
-                <li>{aluno.email}</li>
-            </ul>
+            {aluno ? 
+                <ul>
+                    <li>{aluno.id}</li>
+                    <li>{aluno.nome}</li>
+                    <li>{aluno.email}</li>
+                </ul>
+                : false
+            }
+
         </div>
     )
 }
