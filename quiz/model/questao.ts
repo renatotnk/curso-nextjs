@@ -29,7 +29,10 @@ export default class QuestaoModel {
     }
 
     get respondida(){
-        // FIXME: Implementar este método
+        for(let resposta of this.#respostas){
+            if(resposta.revelada) return true
+        }
+        
         return false
     }
 
