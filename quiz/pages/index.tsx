@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import Botao from '../components/Botao/Botao'
-import Questao from '../components/Questao/Questao'
+import Questionario from '../components/Questionario/Questionario'
 import QuestaoModel from '../model/questao'
 import RespostaModel from '../model/resposta'
 
@@ -19,15 +18,11 @@ export default function Home() {
     questaoRef.current = questao
   }, [questao])
 
-  function respostaFornecida(indice: number) {
-    setQuestao(questao.respondercom(indice))
+  function questaoRespondida(questao: QuestaoModel){
+
   }
 
-  function tempoEsgotado() {
-    if(!questaoRef.current.respondida){
-      setQuestao(questaoRef.current.respondercom(-1))
-    }
-  }
+  function goToNextStep(){}
 
   return (
     <div style={{
@@ -37,11 +32,12 @@ export default function Home() {
       alignItems: 'center',
       height: '100vh',
     }}>
-      <Questao valor={questao}
-        tempoDeResposta = {5}
-        respostaFornecida={respostaFornecida}
-        tempoEsgotado={tempoEsgotado} />
-      <Botao texto="Próxima Questão" href="/resultado"/>
+      <Questionario
+        questao={questao}
+        ultima={true}
+        questaoRespondida={questaoRespondida}
+        goToNextStep={goToNextStep }
+      />
     </div>
   )
 }
