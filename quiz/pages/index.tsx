@@ -1,20 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import Questionario from '../components/Questionario/Questionario'
 import QuestaoModel from '../model/questao'
-import RespostaModel from '../model/resposta'
-
-const questaoMock = new QuestaoModel(1, 'Melhor cor?', [
-  RespostaModel.errada('Verde'),
-  RespostaModel.errada('Vermelha'),
-  RespostaModel.errada('Azul'),
-  RespostaModel.certa('Preta'),
-])
+import { useRouter } from 'next/router'
+import { isDataView } from 'util/types'
 
 const BASE_URL = 'http://localhost:3000/api'
 
 export default function Home() {
+  const router = useRouter()
+
   const [questionaryIds, setQuestionIds] = useState<number[]>([])
-  const [questao, setQuestao] = useState(questaoMock)
+  const [questao, setQuestao] = useState<QuestaoModel>()
   const [respostasCertas, setRespostasCertas] = useState<number>(0)
 
   async function loadQuestionIds(){
@@ -44,14 +40,36 @@ export default function Home() {
     setRespostasCertas(respostasCertas + (acertou? 1 : 0))
   }
 
-  function goToNextStep(){} 
+  function idProximaPergunta(){
+    const proximoIndice = questionaryIds.indexOf(questao.id) + 1
+    return questionaryIds[proximoIndice]
+  }
 
-  return (
+  function goToNextStep(){
+    const proximoId = idProximaPergunta()
+    proximoId ? goToNextQuestion(proximoId) : endQuiz()
+  } 
+
+  function goToNextQuestion(proximoId : number){
+    loadQuestion(proximoId)
+  }
+
+  function endQuiz(){
+    router.push({
+      pathname: "/resultado",
+      query:{
+        total: questionaryIds.length,
+        certas: respostasCertas
+      }
+    })
+  }
+
+  return questao ? (
     <Questionario
       questao={questao}
-      ultima={true}
+      ultima={idProximaPergunta() === undefined}
       questaoRespondida={questaoRespondida}
-      goToNextStep={goToNextStep }
+      goToNextStep={goToNextStep}
     />
-  )
+  ) : false
 }

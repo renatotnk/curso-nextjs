@@ -3,6 +3,7 @@ import styles from "./Temporizador.module.css"
 
 
 interface TemporizadorProps{
+    key: any
     duracao: number
     tempoEsgotado: () => void
 }
