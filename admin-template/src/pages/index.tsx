@@ -1,14 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Layout from "../components/template/Layout/Layout";
 
 const Home = () => {
   return (
-    <div className={`
-      flex justify-center items-center h-screen
-      bg-gradient-to-r from-green-500 to-blue-500
-    `}>
-      <h1>Admin</h1>
-    </div>
+    <Layout titulo="Pagina Inicial" subtitulo="Estamos construindo um Template Admin">
+      <h3>Conteudo</h3>
+    </Layout>
   )
 }
 
