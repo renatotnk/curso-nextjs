@@ -4,7 +4,11 @@ import Logo from "../Logo/Logo"
 
 export default function MenuLateral() {
     return(
-        <aside className={`flex flex-col`}>
+        <aside className={`
+            flex flex-col
+            bg-gray-200 text-gray-700
+            dark:bg-gray-900 
+        `}>
             <Logo url="/"/>            
             <ul className={`flex flex-col flex-grow`}>
                 <MenuItem url="/notificacoes" texto="Notificações" icon={IconeSino}/>
@@ -17,8 +21,9 @@ export default function MenuLateral() {
                     icon={IconeSair} 
                     onClick={() => {console.log("Logout")}}
                     className={`
-                        text-red-600
+                        text-red-600 dark:text-red-300
                         hover:bg-red-400 hover:text-white
+                        dark:hover:text-white
                     `}
                     />
             </ul>
