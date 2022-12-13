@@ -6,7 +6,7 @@ interface LogoProps{
 
 export default function Logo(props: LogoProps) {
     return(
-        <div className={`f
+        <div className={`
             flex flex-col items-center justify-center
             bg-gradient-to-r from-indigo-500 to-purple-800
             h-20 w-20

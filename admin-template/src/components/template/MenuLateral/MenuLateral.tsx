@@ -1,14 +1,26 @@
-import { IconeInicio, IconeConfiguracoes, IconeSino } from "../../icons"
+import { IconeInicio, IconeConfiguracoes, IconeSino, IconeSair } from "../../icons"
 import MenuItem from "../MenuItem/MenuItem"
 import Logo from "../Logo/Logo"
 
 export default function MenuLateral() {
     return(
-        <aside>
+        <aside className={`flex flex-col`}>
             <Logo url="/"/>            
-            <ul>
+            <ul className={`flex flex-col flex-grow`}>
                 <MenuItem url="/notificacoes" texto="Notificações" icon={IconeSino}/>
                 <MenuItem url="/config" texto="Configurações" icon={IconeConfiguracoes}/>
+            </ul>
+            <ul>
+                <MenuItem 
+                    url=""
+                    texto="Sair" 
+                    icon={IconeSair} 
+                    onClick={() => {console.log("Logout")}}
+                    className={`
+                        text-red-600
+                        hover:bg-red-400 hover:text-white
+                    `}
+                    />
             </ul>
         </aside>
     )
